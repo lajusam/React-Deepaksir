@@ -6,13 +6,17 @@ import Home from './Home.jsx'
 import Eventhandling from './eventhandling/Eventhandling.jsx'
 import Profile from './eventhandling/pages/profile.jsx'
 import Using from './Tasks/using.jsx'
+import Eventhandler from './Tasks/Eventhandlerbutton.jsx'
+import Day6 from './day6/day6.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App />
     <Home/> */}
     {/* <Profile name="Lajusam" age={34} address={"ktm"}/>
-    <Eventhandling/> */}
-    <Using/>
+    // <Eventhandling/> */}
+    {/* // <Using/>
+    // <Eventhandler/> */}
+    <Day6/>
   </StrictMode>,
 )
