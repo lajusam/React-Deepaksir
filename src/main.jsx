@@ -8,6 +8,7 @@ import Profile from './eventhandling/pages/profile.jsx'
 import Using from './Tasks/using.jsx'
 import Eventhandler from './Tasks/Eventhandlerbutton.jsx'
 import Day6 from './day6/day6.jsx'
+import Task1 from './Taskreactday4/taskunderstanding.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
     // <Eventhandling/> */}
     {/* // <Using/>
     // <Eventhandler/> */}
-    <Day6/>
+    {/* <Day6/> */}
+    <Task1/>
   </StrictMode>,
 )
