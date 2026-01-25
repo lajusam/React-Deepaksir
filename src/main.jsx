@@ -10,6 +10,7 @@ import Eventhandler from './Tasks/Eventhandlerbutton.jsx'
 import Day6 from './day6/day6.jsx'
 import Task1 from './Taskreactday4/taskunderstanding.jsx'
 import Task2 from './Taskreactday4/taskeventhandling.jsx'
+import Auth from './day6/auth/Authpage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +22,9 @@ createRoot(document.getElementById('root')).render(
     // <Eventhandler/> */}
     {/* <Day6/> */}
     {/* <Task1/> */}
-    <Task2/>
+    {/* <Task2/> */}
+    <Auth isAuthenticated={false}/>
+    <b>After login:::::</b>
+    <Auth isAuthenticated={true}/>
   </StrictMode>,
 )
