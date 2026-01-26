@@ -11,8 +11,14 @@ const Login=()=>{
             {
                 rules.map((e,i)=>{
                     return (
-                        <li key={i}>{e.name},
-                        Rules:{e.rule}</li>
+                        <div>
+                        <ol>
+                        <li key={i}>Names:{e.name}: {e.rule}</li>
+                       
+                        </ol>
+                        </div>
+                      
+                       
                     )
                 })
             }

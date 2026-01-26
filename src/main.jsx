@@ -11,6 +11,8 @@ import Day6 from './day6/day6.jsx'
 import Task1 from './Taskreactday4/taskunderstanding.jsx'
 import Task2 from './Taskreactday4/taskeventhandling.jsx'
 import Auth from './day6/auth/Authpage.jsx'
+import Taskday6 from './Taskreactday4/taskday6.jsx'
+import Todolist from './Tasks/Todo-list.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,8 +25,10 @@ createRoot(document.getElementById('root')).render(
     {/* <Day6/> */}
     {/* <Task1/> */}
     {/* <Task2/> */}
-    <Auth isAuthenticated={false}/>
+    {/* <Auth isAuthenticated={false}/>
     <b>After login:::::</b>
-    <Auth isAuthenticated={true}/>
+    <Auth isAuthenticated={true}/> */}
+  {/* <Taskday6/> */}
+  <Todolist/>
   </StrictMode>,
 )
