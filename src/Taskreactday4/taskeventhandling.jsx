@@ -14,7 +14,7 @@ const App=()=>{
     const [show,setShow]=useState(false);
     const [color,setcolor]=useState("white");
     const [message,setmessage]=useState("");
-    const [like,setLike]=useState(0)
+    const [like,setLike]=useState(m0)
     const [text1,setMouse]=useState(false);
 
     let texthandle=(e)=>{
