@@ -1,18 +1,19 @@
-import {  useState } from "react";
+import { useState } from "react";
 import "./dynamic.css";
 const DynamicFoodMenu = () => {
   //preparing state using use state
-        const[name,setname]=useState("");
-        const[price,setprice]=useState(0);
-        const[discription,setdiscription]=useState("");
-        const[imgurl,seturl]=useState("");
+  const [name, setname] = useState("");
+  const [price, setprice] = useState(0);
+  const [discription, setdiscription] = useState("");
+  const [imgurl, seturl] = useState("");
+    const [deleteID,setDeleteid]=useState(null);
   const [foodMenuList, setFoodMenuList] = useState([
     {
       id: 1,
       name: "Pizza",
       price: 1000,
       description: "A delicious cheesy pizza with your choice of toppings.",
-      image:
+      imageurl:
         "https://img.freepik.com/premium-photo/closeup-cheese-pepperoni-pizza-slice-being-lifted_1223942-16181.jpg?w=1060",
     },
     // {
@@ -26,25 +27,71 @@ const DynamicFoodMenu = () => {
   ]);
 
   const handleAddFoodMenu = (e) => {
-        e.preventDefault();
+    e.preventDefault();
     const newFoodMenu = {
       id: foodMenuList.length + 1,
       name: name,
       price: price,
       description: discription,
-      image: imgurl,
+      imageurl: imgurl,
     };
     setFoodMenuList([...foodMenuList, newFoodMenu]);
     setname("");
     setprice(0);
-setdiscription("");
-seturl("")
-    
+    setdiscription("");
+    seturl("");
   };
+
+  const [isEdit, setisedit] = useState(false);
+
+  const handleeditbuttonclick = (data) => {
+    setisedit(true);
+    setname(data.name);
+    setdiscription(data.description);
+    setprice(data.price);
+    seturl(data.imageurl);
+    seteditId(data.id);
+  };
+
+  const [editId, seteditId] = useState(null);
+  const handleEditfoodmenu = (e) => {
+    e.preventDefault();
+    console.log(editId)
+    let matchedData = foodMenuList.find(
+      (fn) => {
+        return fn.id == editId;
+      }
+    );console.log(matchedData)
+    // Updating data from
+    matchedData.name = name;
+    matchedData.price = price;
+    matchedData.description = discription;
+    matchedData.imageurl = imgurl;
+
+    setFoodMenuList([...foodMenuList]);
+    setname("");
+    setprice(0);
+    setdiscription("");
+    seturl("");
+    setisedit(false);
+    seteditId(null);
+  };
+
+
+  const handleDeletedFoodmenu=()=>{
+      const filteredData= foodMenuList.filter(
+        (fn)=>{
+          return fn.id !== deleteID;
+        }
+      )
+      setFoodMenuList([...filteredData])
+      setDeleteid(null);
+  }
+
   return (
     <div>
       <h1> Dynamic Food Menu</h1>
-      <div style={{ display:"flex"}}>
+      <div style={{ display: "flex" }}>
         <div
           style={{
             display: "grid",
@@ -53,7 +100,7 @@ seturl("")
             justifyContent: "center",
           }}
         >
-          {foodMenuList.map((el) => {
+          {foodMenuList.map((el, i) => {
             return (
               <div
                 key={`${el.id}-${el.name}`}
@@ -67,7 +114,7 @@ seturl("")
                 }}
               >
                 <img
-                  src={el.image}
+                  src={el.imageurl}
                   alt={el.name}
                   style={{
                     width: "120px",
@@ -82,43 +129,91 @@ seturl("")
                   </p>
                   <p>{el.price}</p>
                   <p>{el.description}</p>
-                  <button className=" button Delete">Delete</button>
+                  <button onClick={() => setDeleteid(el.id)} className="button Delete">Delete</button>
+                  
+                          
                   <span>&nbsp;</span>
                   <span>&nbsp;</span>
-                  <button className=" button edit">Edit</button>
+                  <button
+                    onClick={() => handleeditbuttonclick(el)}
+                    className=" button edit"
+                  >
+                    Edit
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
         <div className="form-container">
-          <form onSubmit={handleAddFoodMenu}>
+          <form onSubmit={isEdit ? handleEditfoodmenu : handleAddFoodMenu}>
             <h3>Food Menu</h3>
             <label>
               Food name
               <br />
-              <input value={name} type="text" placeholder="Enter the food name" onChange={(e)=>setname(e.target.value)} />
+              <input
+                value={name}
+                type="text"
+                placeholder="Enter the food name"
+                onChange={(e) => setname(e.target.value)}
+              />
             </label>
             <br />
             <label>
               Price
               <br />
-              <input  value={price}type="number" placeholder="Enter the price"  onChange={(e)=>setprice(e.target.value)}/>
+              <input
+                value={price}
+                type="number"
+                placeholder="Enter the price"
+                onChange={(e) => setprice(e.target.value)}
+              />
             </label>
             <br />
             <label>
               Description
               <br />
-              <input value={discription}  type="text" placeholder="Enter the discription" onChange={(e)=>setdiscription(e.target.value)}/>
-            </label><br/>
-            <label>Image<br/>
-                <input value={imgurl}type="text" placeholder="Enter the url" onChange={(e)=>seturl(e.target.value)}/>
-
-            </label><br/>
-            <button className="button">Add food menu</button>
+              <input
+                value={discription}
+                type="text"
+                placeholder="Enter the discription"
+                onChange={(e) => setdiscription(e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Image
+              <br />
+              <input
+                value={imgurl}
+                type="text"
+                placeholder="Enter the url"
+                onChange={(e) => seturl(e.target.value)}
+              />
+            </label>
+            <br />
+            <button  className={`button ${isEdit && "edit"}`}>
+              {isEdit ? "Edit button" : "Add foood menu"}
+              
+            </button>
           </form>
         </div>
       </div>
+      {deleteID && (
+       <div className="confromationDelete">
+    <p>Are you sure you want to delete this food item?</p>
+
+    <button className="button Delete" onClick={handleDeletedFoodmenu}>
+      Yes
+    </button>
+
+    <span>&nbsp;</span>
+
+    <button className="button edit" onClick={() => setDeleteid(null)}>
+      No
+    </button>
+  </div>
+)}
     </div>
   );
 };
