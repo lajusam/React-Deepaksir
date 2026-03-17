@@ -15,6 +15,10 @@ import Taskday6 from './Taskreactday4/taskday6.jsx'
 import Todolist from './Tasks/Todo-list.jsx'
 import Currenttask from './Taskreactday4/currenttask.jsx'
 import DynamicFoodMenu from './pages/dyamicfood.jsx'
+import UseMemoComponent from './hooks/Usememocomponent.jsx'
+import UseCallbackComponent from './hooks/UseCallback.jsx'
+import TodoExample from './hooks/TodoExample.jsx'
+import UseReducerExample from './hooks/UseReducerExample.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -33,6 +37,11 @@ createRoot(document.getElementById('root')).render(
   {/* <Taskday6/> */}
   {/* <Todolist/> */}
   {/* <Currenttask/> */}
-  <DynamicFoodMenu/>
+  {/* <DynamicFoodMenu/> */}
+  {/* <UseMemoComponent/> */}
+  {/* <UseCallbackComponent/> */}
+  {/* <TodoExample/> */}
+  <UseReducerExample/>
+
   </StrictMode>,
 )
