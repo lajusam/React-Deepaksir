@@ -1,0 +1,11 @@
+.dark{
+    background-color: black;
+    color:white;
+    padding :20px;
+}
+.light{
+     background-color: yellow;
+
+    color:black;
+    padding :20px;
+}

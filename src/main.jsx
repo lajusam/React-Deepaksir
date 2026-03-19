@@ -19,11 +19,14 @@ import UseMemoComponent from './hooks/Usememocomponent.jsx'
 import UseCallbackComponent from './hooks/UseCallback.jsx'
 import TodoExample from './hooks/TodoExample.jsx'
 import UseReducerExample from './hooks/UseReducerExample.jsx'
+import UsercontextA from './hooks/usecontext/UsercontextA.jsx'
+import ThemeToggle from './hooks/usecontext/ThemeToggle.jsx'
+import ThemecontextProvider from './hooks/usecontext/Themecontextprovider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App />
-    <Home/> */}
+    {/* <App /> */}
+    
     {/* <Profile name="Lajusam" age={34} address={"ktm"}/>
     // <Eventhandling/> */}
     {/* // <Using/>
@@ -41,7 +44,12 @@ createRoot(document.getElementById('root')).render(
   {/* <UseMemoComponent/> */}
   {/* <UseCallbackComponent/> */}
   {/* <TodoExample/> */}
-  <UseReducerExample/>
-
+  {/* <UseReducerExample/> */}
+       {/* <UsercontextA/> */}
+      <ThemecontextProvider>
+      <ThemeToggle/>
+      <Home/>
+      </ThemecontextProvider>
+      
   </StrictMode>,
 )
