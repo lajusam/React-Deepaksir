@@ -22,9 +22,15 @@ import UseReducerExample from './hooks/UseReducerExample.jsx'
 import UsercontextA from './hooks/usecontext/UsercontextA.jsx'
 import ThemeToggle from './hooks/usecontext/ThemeToggle.jsx'
 import ThemecontextProvider from './hooks/usecontext/Themecontextprovider.jsx'
-
+import RouteApp from './Routeapp.jsx'
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <div>
+    <RouteApp/>
+  </div>
+)
+
+
+  // <StrictMode>
     {/* <App /> */}
     
     {/* <Profile name="Lajusam" age={34} address={"ktm"}/>
@@ -45,11 +51,12 @@ createRoot(document.getElementById('root')).render(
   {/* <UseCallbackComponent/> */}
   {/* <TodoExample/> */}
   {/* <UseReducerExample/> */}
-       {/* <UsercontextA/> */}
+       {/* <UsercontextA/>
       <ThemecontextProvider>
       <ThemeToggle/>
       <Home/>
       </ThemecontextProvider>
-      
-  </StrictMode>,
-)
+       */}
+  {/* </StrictMode>, */}
+
+
